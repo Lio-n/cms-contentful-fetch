@@ -19,23 +19,40 @@ const createArrayOfObjectsFromContentful = (arrContentful) => {
         (this.urlImg = urlImg);
     }
   }
-
   //newArr tendra las 'Keys'(title, description, link(URL) y image(URL))
   let newArr = arrContentful.items.map((r) => {
-    let idImage = r.fields.image.sys.id; //id de la imagen a buscar
-    let urlImage = getUrlImage(arrContentful.includes.Asset, idImage); //Retorna la 'URL de la imagen'
+    let idImg = r.fields.image.sys.id; //id de la imagen a buscar
+    let urlImg = getUrlImage(arrContentful.includes.Asset, idImg); //Retorna la 'URL de la imagen'
     return new work(
       r.fields.title,
       r.fields.description,
       r.fields.link,
-      urlImage
+      urlImg
     );
   });
   return newArr;
 };
 
-//Recive un 'Array de Objects' y lo deplega en el 'Document'
-const createCardsOnDocument = (newArr) => {};
+//Recibe un 'Array de Objects' y lo deplega en el 'Document'
+const createCardsOnDocument = (newArr) => {
+  let $container_main = document.querySelector(".container_main"), //Le agrego los Items desde el Template
+    $templateEl = document.querySelector("template").content, //El Template
+    $fregment = document.createDocumentFragment(); //Se crea un objeto DocumentFragment vacio
+
+  //(title, description, link(URL) y urlImg(URL))
+  newArr.forEach((item) => {
+    $templateEl.querySelector(".title").textContent = item.title;
+    $templateEl.querySelector(".description").textContent =
+      item.description + "...";
+    $templateEl.querySelector(".ver_Mas").textContent = "[Leer más]";
+    $templateEl.querySelector("a").setAttribute("href", item.link);
+    $templateEl.querySelector("img").setAttribute("src", item.urlImg);
+    let $clone = document.importNode($templateEl, true);
+    $fregment.appendChild($clone);
+  });
+
+  $container_main.appendChild($fregment);
+};
 
 function main() {
   console.time();
@@ -47,20 +64,8 @@ function main() {
     })
     .then((e) => {
       let newArr = createArrayOfObjectsFromContentful(e); //Devuelve un 'Array de Objetos' con las 'Keys'(title,description,link,urlImg)
-      console.log("NewArray::", newArr);
+      createCardsOnDocument(newArr);
       console.timeEnd();
-      return newArr;
     });
-  // .then((e) => {
-  //   createCardsOnDocument(e); //Recive un 'Array de Objects' y lo deplega en el 'Document'
-  //   console.timeEnd();
-  // });
 }
 main();
-
-// .then((e) => {
-//     let h2 = (document.querySelector(".title").textContent = e[0].title),
-//       p = (document.querySelector(".description").textContent =
-//         e[0].description),
-//       a = (document.querySelector(".link").textContent = e[0].link);
-// });

@@ -29,9 +29,10 @@ h2 {
   height: 100%;
   margin-bottom: 40px;
 }
-.img {
+img {
   border: rgb(255, 0, 0) solid;
-  height: 255px;
+  width: 100%;
+  height: 100%;
 }
 .container_Description_And_Title {
   margin: 20px;
@@ -40,10 +41,10 @@ h2 {
   font-size: 30px;
 }
 .description,
-.verMas {
+.ver_Mas {
   font-size: 18px;
 }
-.verMas {
+.ver_Mas {
   display: flex;
   justify-content: flex-end;
 }
