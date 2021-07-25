@@ -35,23 +35,23 @@ const createArrayOfObjectsFromContentful = (arrContentful) => {
 
 //Recibe un 'Array de Objects' y lo deplega en el 'Document'
 const createCardsOnDocument = (newArr) => {
-  let $container_main = document.querySelector(".container_main"), //Le agrego los Items desde el Template
+  let $container_cards = document.querySelector(".container_cards"), //Le agrego los Items desde el Template
     $templateEl = document.querySelector("template").content, //El Template
     $fregment = document.createDocumentFragment(); //Se crea un objeto DocumentFragment vacio
 
   //(title, description, link(URL) y urlImg(URL))
   newArr.forEach((item) => {
     $templateEl.querySelector(".title").textContent = item.title;
-    $templateEl.querySelector(".description").textContent =
+    $templateEl.querySelector(".descrip").textContent =
       item.description + "...";
-    $templateEl.querySelector(".ver_Mas").textContent = "[Leer más]";
+    $templateEl.querySelector(".ver_mas").textContent = "Ver más";
     $templateEl.querySelector("a").setAttribute("href", item.link);
     $templateEl.querySelector("img").setAttribute("src", item.urlImg);
     let $clone = document.importNode($templateEl, true);
     $fregment.appendChild($clone);
   });
 
-  $container_main.appendChild($fregment);
+  $container_cards.appendChild($fregment);
 };
 
 function main() {

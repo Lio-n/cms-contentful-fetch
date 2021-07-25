@@ -3,17 +3,17 @@
   margin: 0px;
 }
 body {
-  background-color: #7510f7;
+  background-color: rgb(255, 254, 255);
+  font-family: "Poppins", sans-serif;
 }
 /*<--Container-Main-->*/
 .container_main {
-  border: aqua solid;
+  border: brown solid;
   height: 100%;
-  padding: 45px 40px 0px 40px;
-  display: flex;
-  display: block;
-  justify-content: center;
+  width: 100%;
+  padding: 40px 30px 50px 30px;
 }
+/*<--Container-Head-->*/
 .container_head {
   border: rgb(218, 13, 190) solid;
   margin-bottom: 90px;
@@ -23,28 +23,46 @@ h1,
 h2 {
   margin-bottom: 10px;
 }
-/*<--Cards-"info"-->*/
+h1 {
+  font-size: 30px;
+  font-weight: 600;
+}
+h2 {
+  font-size: 24px;
+  font-weight: normal;
+}
+/*<--Cards-"container"-->*/
 .container_cards {
-  border: turquoise solid;
-  height: 100%;
+  width: 348px;
+}
+/*<--Card-"info"-->*/
+.card {
   margin-bottom: 40px;
+  border: #000000 solid 2px;
+  border-radius: 4px;
 }
 img {
-  border: rgb(255, 0, 0) solid;
+  background-color: gold;
   width: 100%;
+}
+/*<--Cards-"descrip_and_title"-->*/
+.cont_descrip_and_title {
+  margin: 20px 15px 15px 15px;
   height: 100%;
 }
-.container_Description_And_Title {
-  margin: 20px;
-}
 .title {
-  font-size: 30px;
+  font-size: 25px;
+  margin-bottom: 10px;
+  font-weight: 600;
 }
-.description,
-.ver_Mas {
-  font-size: 18px;
+.descrip {
+  font-size: 16px;
 }
-.ver_Mas {
+.ver_mas {
+  font-size: 20px;
   display: flex;
   justify-content: flex-end;
+  margin-top: 10px;
+  color: #51aff3;
+  font-weight: bold;
 }
